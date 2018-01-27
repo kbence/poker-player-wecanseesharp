@@ -40,7 +40,7 @@ namespace Nancy.Simple
 		public static int BetRequest(JObject gameState, GameObject gameObject)
 		{
 			Player currentPlayer = gameObject.players[gameObject.in_action];
-			Console.WriteLine(String.Format("Cards: %s[%s] %s[%s]",
+			Console.WriteLine(String.Format("Cards: {0}[{1}] {2}[{3}]",
 				currentPlayer.hole_cards[0].suit, currentPlayer.hole_cards[0].rank,
 				currentPlayer.hole_cards[1].suit, currentPlayer.hole_cards[1].rank));
 			
