@@ -6,7 +6,7 @@ namespace Nancy.Simple
 {
 	public static class PokerPlayer
 	{
-		public static readonly string VERSION = "The \"not doing anything but still works\" machine";
+		public static readonly string VERSION = "The panicked machine";
 
 		public static int BetRequest(JObject gameState, GameObject gameObject)
 		{
@@ -20,7 +20,7 @@ namespace Nancy.Simple
 			}
 
 			if (currentPlayer.hole_cards[0].rank == currentPlayer.hole_cards[1].rank &&
-				currentPlayer.hole_cards[0].Value > 9)
+				currentPlayer.hole_cards[0].Value > 10)
 			{
 				log.AllIn("high_pair", gameObject.pot);
 				return call + gameObject.pot;
@@ -28,12 +28,12 @@ namespace Nancy.Simple
 
 			if (currentPlayer.hole_cards[0].rank == currentPlayer.hole_cards[1].rank) {
 				log.Raise("pair", gameObject.pot);
-				return call + gameObject.minimum_raise * 2;
+				return call + gameObject.minimum_raise;
 			}
 
 			if (currentPlayer.hole_cards[0].Value > 9 && currentPlayer.hole_cards[1].Value > 9) {
 				log.Raise("high_cards", gameObject.minimum_raise);
-				return call + gameObject.minimum_raise;
+				return call;
 			}
 
 			log.Fold("no_good_hands");
