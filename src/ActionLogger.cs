@@ -20,6 +20,20 @@ namespace Nancy.Simple {
 				player.hole_cards[0], player.hole_cards[1], communityCards);
 		}
 
+		public void Players() {
+			string playerString = "";
+
+			foreach (Player player in gameObject.players) {
+				if (playerString.Length > 0) {
+					playerString += " " + player.ToString();
+				} else {
+					playerString += player.ToString();
+				}
+			}
+
+			Console.WriteLine("game={0} players=\"{1}\"", gameObject.game_id, playerString);
+		}
+
 		public void Fold(string reason) {
 			Cards();
 			Console.WriteLine("game={0} action=fold reason={1}", gameObject.game_id, reason);

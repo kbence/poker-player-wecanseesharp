@@ -42,7 +42,8 @@ namespace Nancy.Simple
 
 		public static void ShowDown(JObject gameState, GameObject gameObject)
 		{
-			Console.WriteLine("Showdown!");
+			ActionLogger log = new ActionLogger(gameObject);
+			log.Players();
 		}
 	}
 }

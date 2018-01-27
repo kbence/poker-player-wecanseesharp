@@ -26,6 +26,10 @@ namespace Nancy.Simple {
 		public int stack;
 		public int bet;
 		public Card[] hole_cards;
+
+		override public string ToString() {
+			return String.Format("[Player name={0} money={1}/{2}]", name, bet, stack);
+		}
 	}
 
 	public class GameObject {
