@@ -34,6 +34,9 @@ namespace Nancy.Simple {
 			Cards();
 			Console.WriteLine("game={0} action=all_id reason={1} raise={2}", gameObject.game_id, reason, raise);
 		}
+
+		public void String(string message) {
+		}
 	}
 }
 
