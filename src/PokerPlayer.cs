@@ -10,33 +10,33 @@ namespace Nancy.Simple
 
 		public static int BetRequest(JObject gameState, GameObject gameObject)
 		{
+			ActionLogger log = new ActionLogger(gameObject);
+			int call = gameObject.current_buy_in - gameObject.players[gameObject.in_action].bet;
+
 			Player currentPlayer = gameObject.players[gameObject.in_action];
-			Console.WriteLine(String.Format("Hole Cards: {0} {1}",
-				currentPlayer.hole_cards[0], currentPlayer.hole_cards[1]));
 			string communityCards = "";
 			foreach (Card card in gameObject.community_cards) {
 				communityCards += " " + card.ToString();
 			}
-			Console.WriteLine(String.Format("Community Cards:{0}", communityCards));
 
 			if (currentPlayer.hole_cards[0].rank == currentPlayer.hole_cards[1].rank &&
 				currentPlayer.hole_cards[0].Value > 9)
 			{
-				Console.WriteLine("{0} action=all_in reason=high_pair raise={1}", gameObject.game_id, gameObject.pot);
-				return gameObject.current_buy_in + gameObject.pot;
+				log.AllIn("high_pair", gameObject.pot);
+				return call + gameObject.pot;
 			}
 
 			if (currentPlayer.hole_cards[0].rank == currentPlayer.hole_cards[1].rank) {
-				Console.WriteLine("{0} action=raise_with_2xmin reason=pair raise={1}", gameObject.game_id, gameObject.pot);
-				return gameObject.current_buy_in + gameObject.minimum_raise * 2;
+				log.Raise("pair", gameObject.pot);
+				return call + gameObject.minimum_raise * 2;
 			}
 
 			if (currentPlayer.hole_cards[0].Value > 9 && currentPlayer.hole_cards[1].Value > 9) {
-				Console.WriteLine("{0} action=raise_with_min reason=high_cards raise={1}", gameObject.game_id, gameObject.minimum_raise);
-				return gameObject.current_buy_in + gameObject.minimum_raise;
+				log.Raise("high_cards", gameObject.minimum_raise);
+				return call + gameObject.minimum_raise;
 			}
 
-			Console.WriteLine("{0} action=fold reason=no_good_hands", gameObject.game_id);
+			log.Fold("no_good_hands");
 			return 0;
 		}
 

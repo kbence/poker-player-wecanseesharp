@@ -81,6 +81,7 @@
     <Compile Include="PokerPlayer.cs" />
     <Compile Include="JsonModel.cs" />
     <Compile Include="TestPoker.cs" />
+    <Compile Include="ActionLogger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
