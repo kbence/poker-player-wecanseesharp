@@ -5,11 +5,19 @@ using System;
 namespace Nancy.Simple
 {
 	public class Card {
+		public static readonly string[] RANKS = { "2", "3", "4", "5", "6", "7", "8", "9", "J", "Q", "K", "A" };
+
 		public string rank;
 		public string suit;
 
 		public override string ToString() {
 			return String.Format("[Card suit={0} rank={1}]", this.suit, this.rank);
+		}
+
+		public int Value {
+			get {
+				return Array.IndexOf(RANKS, rank);
+			}
 		}
 	}
 
@@ -53,7 +61,11 @@ namespace Nancy.Simple
 			Console.WriteLine(String.Format("Community Cards:{0}", communityCards));
 
 			if (currentPlayer.hole_cards[0].rank == currentPlayer.hole_cards[1].rank) {
-				return 1000;
+				return gameObject.current_buy_in + gameObject.pot;
+			}
+
+			if (currentPlayer.hole_cards[0].Value >= 9 && currentPlayer.hole_cards[1].Value >= 9) {
+				return gameObject.current_buy_in + gameObject.minimum_raise;
 			}
 
 			return 0;
