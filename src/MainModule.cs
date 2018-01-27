@@ -1,4 +1,5 @@
 using System;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Text;
 
@@ -21,11 +22,13 @@ namespace Nancy.Simple
 			Post ["/"] = parameters => {
 				var form = Request.Form;
 				string action = form ["action"];
+				Console.WriteLine(action);
 				switch (action) {
 				case "bet_request":
 				{
 					var json = JObject.Parse (form ["game_state"]);
-					var bet = PokerPlayer.BetRequest (json).ToString ();
+					var gameObject = JsonConvert.DeserializeObject<GameObject>(form["game_state"]);
+					var bet = PokerPlayer.BetRequest (json, gameObject).ToString ();
 					var betBytes = Encoding.UTF8.GetBytes (bet);
 					var response = new Response {
 						ContentType = "text/plain",
