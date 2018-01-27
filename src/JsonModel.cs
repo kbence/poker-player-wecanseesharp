@@ -29,6 +29,8 @@ namespace Nancy.Simple {
 	}
 
 	public class GameObject {
+		public string tournament_id;
+		public string game_id;
 		public int round;
 		public int bet_index;
 		public int small_blind;
