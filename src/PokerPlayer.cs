@@ -39,12 +39,17 @@ namespace Nancy.Simple
 
 		public static int BetRequest(JObject gameState, GameObject gameObject)
 		{
-			Console.WriteLine(gameObject.orbits);
+			Player currentPlayer = gameObject.players[gameObject.in_action];
+			Console.WriteLine(String.Format("Cards: %s[%s] %s[%s]",
+				currentPlayer.hole_cards[0].suit, currentPlayer.hole_cards[0].rank,
+				currentPlayer.hole_cards[1].suit, currentPlayer.hole_cards[1].rank));
+			
 			return 1000;
 		}
 
-		public static void ShowDown(JObject gameState)
+		public static void ShowDown(JObject gameState, GameObject gameObject)
 		{
+			Console.WriteLine("Showdown!");
 		}
 	}
 }

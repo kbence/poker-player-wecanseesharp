@@ -40,7 +40,8 @@ namespace Nancy.Simple
 				case "showdown":
 				{
 					var json = JObject.Parse (form ["game_state"]);
-					PokerPlayer.ShowDown (json);
+					var gameObject = JsonConvert.DeserializeObject<GameObject>(form["game_state"]);
+					PokerPlayer.ShowDown (json, gameObject);
 					var showDownBytes = Encoding.UTF8.GetBytes ("OK");
 					var response = new Response {
 						ContentType = "text/plain",
