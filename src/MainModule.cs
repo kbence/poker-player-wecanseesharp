@@ -22,7 +22,6 @@ namespace Nancy.Simple
 			Post ["/"] = parameters => {
 				var form = Request.Form;
 				string action = form ["action"];
-				Console.WriteLine(action);
 				switch (action) {
 				case "bet_request":
 				{
