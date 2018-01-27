@@ -19,6 +19,18 @@ namespace Nancy.Simple
 				communityCards += " " + card.ToString();
 			}
 
+			var hand = gameObject.CurrentHand;
+
+			if (hand.HasFlush()) {
+				log.Raise("flush", gameObject.minimum_raise * 5);
+				return call + gameObject.minimum_raise * 5;
+			}
+
+			if (hand.HasPair() && hand.HasThreeOfAKind()) {
+				log.Raise("full_house", gameObject.minimum_raise * 3);
+				return call + gameObject.minimum_raise * 3;
+			}
+
 			if (currentPlayer.hole_cards[0].rank == currentPlayer.hole_cards[1].rank &&
 				currentPlayer.hole_cards[0].Value > 10)
 			{

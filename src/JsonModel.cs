@@ -46,6 +46,12 @@ namespace Nancy.Simple {
 		public int in_action;
 		public Player[] players;
 		public Card[] community_cards;
+
+		public Hand CurrentHand {
+			get {
+				return new Hand(players[in_action].hole_cards, community_cards);
+			}
+		}
 	}
 }
 

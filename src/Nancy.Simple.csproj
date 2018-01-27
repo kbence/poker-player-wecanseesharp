@@ -91,6 +91,7 @@
     <Compile Include="BetHandler.cs" />
     <Compile Include="SimpleBetLogic.cs" />
     <Compile Include="HandClassifier.cs" />
+    <Compile Include="TestHandClassifier.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
