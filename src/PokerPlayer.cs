@@ -24,7 +24,7 @@ namespace Nancy.Simple
 				return gameObject.current_buy_in + gameObject.pot;
 			}
 
-			if (currentPlayer.hole_cards[0].Value >= 9 && currentPlayer.hole_cards[1].Value >= 9) {
+			if (currentPlayer.hole_cards[0].Value > 9 && currentPlayer.hole_cards[1].Value > 9) {
 				Console.WriteLine("action=raise_with_min reason=high_cards raise={0}", gameObject.minimum_raise);
 				return gameObject.current_buy_in + gameObject.minimum_raise;
 			}
