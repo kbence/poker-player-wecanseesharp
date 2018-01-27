@@ -27,7 +27,7 @@ namespace Nancy.Simple {
 
 		public void Raise(string reason, int raise) {
 			Cards();
-			Console.WriteLine("game={0} action=raise reason={1}, raise={2}", gameObject.game_id, reason, raise);
+			Console.WriteLine("game={0} action=raise reason={1} raise={2}", gameObject.game_id, reason, raise);
 		}
 
 		public void AllIn(string reason, int raise) {
