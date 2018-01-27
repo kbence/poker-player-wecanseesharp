@@ -22,17 +22,17 @@ namespace Nancy.Simple {
 
 		public void Fold(string reason) {
 			Cards();
-			Console.WriteLine("game={0} reason={1}", gameObject.game_id, reason);
+			Console.WriteLine("game={0} action=fold reason={1}", gameObject.game_id, reason);
 		}
 
 		public void Raise(string reason, int raise) {
 			Cards();
-			Console.WriteLine("game={0} reason={1}", gameObject.game_id, reason, raise);
+			Console.WriteLine("game={0} action=raise reason={1}, raise={2}", gameObject.game_id, reason, raise);
 		}
 
 		public void AllIn(string reason, int raise) {
 			Cards();
-			Console.WriteLine("game={0} reason={1}", gameObject.game_id, reason, raise);
+			Console.WriteLine("game={0} action=all_id reason={1} raise={2}", gameObject.game_id, reason, raise);
 		}
 	}
 }
