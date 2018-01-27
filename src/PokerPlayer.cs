@@ -6,7 +6,7 @@ namespace Nancy.Simple
 {
 	public static class PokerPlayer
 	{
-		public static readonly string VERSION = "The calmed machine";
+		public static readonly string VERSION = "The panicked machine";
 
 		public static int BetRequest(JObject gameState, GameObject gameObject)
 		{
@@ -18,9 +18,6 @@ namespace Nancy.Simple
 			foreach (Card card in gameObject.community_cards) {
 				communityCards += " " + card.ToString();
 			}
-
-			log.Fold("panic?");
-			return 0;
 
 			if (currentPlayer.hole_cards[0].rank == currentPlayer.hole_cards[1].rank &&
 				currentPlayer.hole_cards[0].Value > 10)
