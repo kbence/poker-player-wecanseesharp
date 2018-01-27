@@ -16,7 +16,7 @@ namespace Nancy.Simple {
 				communityCards += " " + card.ToString();
 			}
 
-			Console.WriteLine("game={0} Cards: {1} {2} |{3}", gameObject.game_id,
+			Console.WriteLine("game={0} cards=\"{1} {2} |{3}\"", gameObject.game_id,
 				player.hole_cards[0], player.hole_cards[1], communityCards);
 		}
 
