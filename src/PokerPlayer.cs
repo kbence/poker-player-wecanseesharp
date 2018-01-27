@@ -22,12 +22,12 @@ namespace Nancy.Simple
 			if (currentPlayer.hole_cards[0].rank == currentPlayer.hole_cards[1].rank &&
 				currentPlayer.hole_cards[0].Value > 10)
 			{
-				log.AllIn("high_pair", gameObject.pot);
-				return call + gameObject.pot;
+				log.Raise("high_pair", gameObject.minimum_raise * 2);
+				return call + gameObject.minimum_raise * 2;
 			}
 
 			if (currentPlayer.hole_cards[0].rank == currentPlayer.hole_cards[1].rank) {
-				log.Raise("pair", gameObject.pot);
+				log.Raise("pair", gameObject.minimum_raise);
 				return call + gameObject.minimum_raise;
 			}
 
