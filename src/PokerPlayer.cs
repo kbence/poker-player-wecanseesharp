@@ -11,7 +11,7 @@ namespace Nancy.Simple
 		public string suit;
 
 		public override string ToString() {
-			return String.Format("[Card suit={0} rank={1}]", this.suit, this.rank);
+			return String.Format("[Card {0} {1}]", this.suit, this.rank);
 		}
 
 		public int Value {
@@ -61,13 +61,16 @@ namespace Nancy.Simple
 			Console.WriteLine(String.Format("Community Cards:{0}", communityCards));
 
 			if (currentPlayer.hole_cards[0].rank == currentPlayer.hole_cards[1].rank) {
+				Console.WriteLine("action=all_in reason=pair raise={0}", gameObject.pot);
 				return gameObject.current_buy_in + gameObject.pot;
 			}
 
 			if (currentPlayer.hole_cards[0].Value >= 9 && currentPlayer.hole_cards[1].Value >= 9) {
+				Console.WriteLine("action=raise_with_min reason=high_cards raise={0}", gameObject.minimum_raise);
 				return gameObject.current_buy_in + gameObject.minimum_raise;
 			}
 
+			Console.WriteLine("action=fold reason=no_good_hands");
 			return 0;
 		}
 
