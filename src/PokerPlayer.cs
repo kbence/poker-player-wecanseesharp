@@ -19,9 +19,6 @@ namespace Nancy.Simple
 				communityCards += " " + card.ToString();
 			}
 
-			log.Fold("panic_attack");
-			return 0;
-
 			if (currentPlayer.hole_cards[0].rank == currentPlayer.hole_cards[1].rank &&
 				currentPlayer.hole_cards[0].Value > 10)
 			{
