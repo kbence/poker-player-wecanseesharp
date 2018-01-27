@@ -51,8 +51,12 @@ namespace Nancy.Simple
 				communityCards += " " + card.ToString();
 			}
 			Console.WriteLine(String.Format("Community Cards:{0}", communityCards));
-			
-			return 1000;
+
+			if (currentPlayer.hole_cards[0].rank == currentPlayer.hole_cards[1].rank) {
+				return 1000;
+			}
+
+			return 0;
 		}
 
 		public static void ShowDown(JObject gameState, GameObject gameObject)
